@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
-import 'package:rethink/pages/item_info.dart';
+import 'package:rethink/pages/camera_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -28,13 +28,13 @@ class HomePage extends StatelessWidget {
               PersistentBottomNavBarItem(
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
-                  icon: const Icon(Icons.home),
+                  icon: const Icon(Icons.eco),
                   title: 'Home'),
               PersistentBottomNavBarItem(
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
-                  icon: const Icon(Icons.eco),
-                  title: 'Profile'),
+                  icon: const Icon(Icons.school),
+                  title: 'Learn'),
               PersistentBottomNavBarItem(
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
             shape: const CircleBorder(),
             onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const ItemInfo())),
+                MaterialPageRoute(builder: (context) => const CameraPage())),
             child: const Icon(Icons.photo_camera_back)),
         floatingActionButtonLocation:
             FloatingActionButtonLocation.miniCenterFloat);
