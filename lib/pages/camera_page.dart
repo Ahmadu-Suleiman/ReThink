@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:rethink/pages/item_info.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
@@ -12,7 +13,6 @@ class CameraPage extends StatefulWidget {
 
 class _CameraPageState extends State<CameraPage> {
   late CameraController controller;
-  Uint8List? image;
 
   Future<void> initCamera() async {
     final cameras = await availableCameras();
@@ -51,7 +51,11 @@ class _CameraPageState extends State<CameraPage> {
         floatingActionButton: FloatingActionButton(
             onPressed: () async {
               final file = await controller.takePicture();
-              image = await file.readAsBytes();
+              final image = await file.readAsBytes();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ItemInfo(info: info)));
             },
             child: const Icon(Icons.camera_alt)));
   }
