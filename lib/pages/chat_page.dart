@@ -65,12 +65,14 @@ class _ChatPageState extends State<ChatPage> {
       Expanded(
           child: SingleChildScrollView(
               controller: scrollController,
-              child: Column(
-                  children: contents
-                      .map((content) => chatBubble(content.role ?? 'model',
-                          content.parts?.last.text ?? 'No output'))
-                      .toList()))),
-      if (Platform.isAndroid && contents.length == 1)
+              child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                      children: contents
+                          .map((content) => chatBubble(content.role ?? 'model',
+                              content.parts?.last.text ?? 'No output'))
+                          .toList())))),
+      if ((Platform.isAndroid || Platform.isIOS) && contents.length == 1)
         TextButton.icon(
             onPressed: openSMS,
             label: const Text('Offline? Use our SMS service instead'),

@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:rethink/gemini_util.dart';
-import 'package:rethink/pages/item_info.dart';
+import 'package:rethink/pages/item_info_page.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
