@@ -12,8 +12,17 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   bool loading = false;
-  final TextEditingController controller = TextEditingController();
-  List<Content> contents = [];
+  final controller = TextEditingController();
+  final scrollController = ScrollController();
+  List<Content> contents = [
+    Content(parts: [
+      Parts(
+          text: "Hi there! I'm Thinker, your AI sustainability companion. "
+              "I'm here to help you learn more about sustainable practices, "
+              "answer your questions, and offer personalized advice on how to "
+              "reduce your environmental impact.")
+    ], role: 'model')
+  ];
 
   Future<void> sendMessage(String message) async {
     contents.add(Content(parts: [Parts(text: message)], role: 'user'));
@@ -28,26 +37,28 @@ class _ChatPageState extends State<ChatPage> {
           ? Theme.of(context).colorScheme.primaryContainer
           : Theme.of(context).colorScheme.secondaryContainer,
       child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          padding: const EdgeInsets.all(8),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(author == 'model' ? 'Thinker' : 'You',
                 textAlign: TextAlign.start,
                 style: const TextStyle(fontWeight: FontWeight.bold)),
-            Markdown(shrinkWrap: true, data: text)
+            Divider(
+                thickness: 0.1,
+                indent: 8,
+                endIndent: 8,
+                color: Theme.of(context).colorScheme.primary),
+            Markdown(
+                padding: const EdgeInsets.all(0), shrinkWrap: true, data: text)
           ])));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(children: [
-      if (contents.isEmpty)
-        Center(
-            child: Text('Start conversation',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.bold))),
       Expanded(
           child: SingleChildScrollView(
+              controller: scrollController,
               child: Column(
                   children: contents
                       .map((content) => chatBubble(content.role ?? 'model',
@@ -74,11 +85,16 @@ class _ChatPageState extends State<ChatPage> {
                 onPressed: loading
                     ? null
                     : () async {
-                        setState(() => loading = true);
-                        await sendMessage(controller.text);
+                        String text = controller.text;
                         setState(() {
+                          loading = true;
                           controller.text = '';
+                        });
+                        await sendMessage(text);
+                        setState(() {
                           loading = false;
+                          scrollController.jumpTo(
+                              scrollController.position.maxScrollExtent);
                         });
                       })
           ]))
