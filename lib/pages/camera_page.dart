@@ -1,7 +1,6 @@
-import 'dart:typed_data';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:rethink/gemini_util.dart';
 import 'package:rethink/pages/item_info.dart';
 
 class CameraPage extends StatefulWidget {
@@ -13,6 +12,7 @@ class CameraPage extends StatefulWidget {
 
 class _CameraPageState extends State<CameraPage> {
   late CameraController controller;
+  bool loading = false;
 
   Future<void> initCamera() async {
     final cameras = await availableCameras();
@@ -33,17 +33,19 @@ class _CameraPageState extends State<CameraPage> {
             future: initCamera(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return Stack(children: [
-                  CameraPreview(controller),
-                  Padding(
-                      padding: const EdgeInsets.all(200),
-                      child: Container(
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(color: Colors.white, width: 4))))
-                ]);
+                return loading
+                    ? const Center(child: CircularProgressIndicator())
+                    : Stack(children: [
+                        CameraPreview(controller),
+                        Padding(
+                            padding: const EdgeInsets.all(200),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: Colors.white, width: 4))))
+                      ]);
               } else {
                 return const Center(child: CircularProgressIndicator());
               }
@@ -52,10 +54,15 @@ class _CameraPageState extends State<CameraPage> {
             onPressed: () async {
               final file = await controller.takePicture();
               final image = await file.readAsBytes();
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ItemInfo(info: info)));
+              setState(() => loading = true);
+              final info = await GeminiUtil.info(image);
+              setState(() => loading = false);
+              if (context.mounted) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ItemInfo(info: info)));
+              }
             },
             child: const Icon(Icons.camera_alt)));
   }
