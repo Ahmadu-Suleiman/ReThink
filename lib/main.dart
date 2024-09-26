@@ -19,6 +19,6 @@ class App extends StatelessWidget {
         title: 'ReThink',
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.green)),
-        home: HomePage());
+        home: const HomePage());
   }
 }

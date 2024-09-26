@@ -35,16 +35,12 @@ class _CameraPageState extends State<CameraPage> {
               if (snapshot.connectionState == ConnectionState.done) {
                 return loading
                     ? const Center(child: CircularProgressIndicator())
-                    : Stack(children: [
+                    : Stack(fit: StackFit.expand, children: [
                         CameraPreview(controller),
-                        Padding(
-                            padding: const EdgeInsets.all(200),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Colors.white, width: 4))))
+                        const Center(
+                            child: Opacity(
+                                opacity: 0.5,
+                                child: Icon(Icons.eco, color: Colors.white))),
                       ]);
               } else {
                 return const Center(child: CircularProgressIndicator());
