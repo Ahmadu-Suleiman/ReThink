@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:rethink/pages/challenge_page.dart';
 import 'package:rethink/pages/chat_page.dart';
 import 'package:rethink/pages/overview.dart';
+import 'package:rethink/pages/profile_form.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,8 +23,8 @@ class HomePage extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.surface,
             screens: [
               const Overview(),
-              Container(),
-              Container(),
+              const ProfileForm(),
+              ChallengePage(),
               const ChatPage()
             ],
             items: [

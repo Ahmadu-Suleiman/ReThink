@@ -9,10 +9,9 @@ class ItemInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-            child: Markdown(
-                padding: const EdgeInsets.all(12),
-                selectable: true,
-                data: info ?? 'No info available\n🤢')));
+        body: Markdown(
+            padding: const EdgeInsets.all(12),
+            selectable: true,
+            data: info ?? 'No info available\n🤢'));
   }
 }
