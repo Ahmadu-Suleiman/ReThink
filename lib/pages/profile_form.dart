@@ -40,9 +40,13 @@ class _ProfileFormState extends State<ProfileForm> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                      const Text("Let's create your profile first!",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text("Let's create your profile first!",
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
                       TextFormField(
                           controller: controllerName,
@@ -57,9 +61,13 @@ class _ProfileFormState extends State<ProfileForm> {
                               ? 'Please enter your Country'
                               : null),
                       const SizedBox(height: 20),
-                      const Text('Sustainability Interests:',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text('Sustainability Interests:',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
                       CheckboxListTile(
                           value: wasteReduction,
@@ -84,9 +92,13 @@ class _ProfileFormState extends State<ProfileForm> {
                               labelText: 'Other Interests'),
                           maxLines: null),
                       const SizedBox(height: 20),
-                      const Text('Goals:',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text('Goals:',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
                       TextFormField(
                           decoration: const InputDecoration(
@@ -105,9 +117,13 @@ class _ProfileFormState extends State<ProfileForm> {
                               const InputDecoration(labelText: 'Other goals'),
                           maxLines: null),
                       const SizedBox(height: 20),
-                      const Text('Time Commitment:',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text('Time Commitment:',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
                       CheckboxListTile(
                           value: dailyCommitment,
@@ -128,9 +144,13 @@ class _ProfileFormState extends State<ProfileForm> {
                           },
                           title: const Text('Monthly')),
                       const SizedBox(height: 20),
-                      const Text('Additional Information (Optional):',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text('Additional Information (Optional):',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
                       TextFormField(
                           controller: controllerPreferences,
@@ -143,11 +163,14 @@ class _ProfileFormState extends State<ProfileForm> {
                               const InputDecoration(labelText: 'Challenges'),
                           maxLines: null),
                       const SizedBox(height: 16),
-                      ElevatedButton(
-                          child: const Text('Submit'),
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {}
-                          })
+                      Center(
+                          child: ElevatedButton.icon(
+                              label: const Text('Create challenges'),
+                              icon: const Icon(Icons.person),
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {}
+                              })),
+                      const SizedBox(height: 16)
                     ])))));
   }
 

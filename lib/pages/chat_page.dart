@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:rethink/gemini_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -48,8 +51,11 @@ class _ChatPageState extends State<ChatPage> {
                 indent: 8,
                 endIndent: 8,
                 color: Theme.of(context).colorScheme.primary),
-            Markdown(
-                padding: const EdgeInsets.all(0), shrinkWrap: true, data: text)
+            IgnorePointer(
+                child: Markdown(
+                    padding: const EdgeInsets.all(0),
+                    shrinkWrap: true,
+                    data: text))
           ])));
 
   @override
@@ -64,8 +70,13 @@ class _ChatPageState extends State<ChatPage> {
                       .map((content) => chatBubble(content.role ?? 'model',
                           content.parts?.last.text ?? 'No output'))
                       .toList()))),
-      Container(
-          margin: const EdgeInsets.all(16),
+      if (Platform.isAndroid && contents.length == 1)
+        TextButton.icon(
+            onPressed: openSMS,
+            label: const Text('Offline? Use our SMS service instead'),
+            icon: const Icon(Icons.sms)),
+      Padding(
+          padding: const EdgeInsets.all(16),
           child: Row(children: [
             Expanded(
                 child: TextField(
@@ -73,32 +84,43 @@ class _ChatPageState extends State<ChatPage> {
                     maxLines: null,
                     decoration: InputDecoration(
                         hintText: 'Type a message',
+                        suffixIcon: IconButton(
+                            icon: loading
+                                ? const CircularProgressIndicator()
+                                : const Icon(Icons.send),
+                            onPressed: loading
+                                ? null
+                                : () async {
+                                    String text = controller.text;
+                                    setState(() {
+                                      loading = true;
+                                      controller.text = '';
+                                    });
+                                    await sendMessage(text);
+                                    setState(() => loading = false);
+                                    scrollController.animateTo(
+                                        scrollController
+                                            .position.maxScrollExtent,
+                                        duration:
+                                            const Duration(milliseconds: 300),
+                                        curve: Curves.easeOut);
+                                  }),
                         filled: true,
                         fillColor:
                             Theme.of(context).colorScheme.secondaryContainer,
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide.none)))),
-            IconButton(
-                icon: loading
-                    ? const CircularProgressIndicator()
-                    : const Icon(Icons.send),
-                onPressed: loading
-                    ? null
-                    : () async {
-                        String text = controller.text;
-                        setState(() {
-                          loading = true;
-                          controller.text = '';
-                        });
-                        await sendMessage(text);
-                        setState(() {
-                          loading = false;
-                          scrollController.jumpTo(
-                              scrollController.position.maxScrollExtent);
-                        });
-                      })
+                            borderSide: BorderSide.none))))
           ]))
     ]));
+  }
+
+  void openSMS() async {
+    final Uri launchUri = Uri.parse('sms:606700');
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    } else {
+      throw 'Could not open SMS';
+    }
   }
 }
