@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "370299394465",
+    "project_id": "rethink-2892c",
+    "storage_bucket": "rethink-2892c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370299394465:android:d9d75d578b82a010b0d3e0",
+        "android_client_info": {
+          "package_name": "com.meta4project.rethink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpJfZYJwcrJby92hkcs-uY863r4cRQZv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370299394465:android:4364e807c5770d67b0d3e0",
+        "android_client_info": {
+          "package_name": "com.meta4projects.rethink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpJfZYJwcrJby92hkcs-uY863r4cRQZv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
-import 'package:rethink/pages/camera_page.dart';
+import 'package:rethink/pages/chat_page.dart';
+import 'package:rethink/pages/overview.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,21 +19,18 @@ class HomePage extends StatelessWidget {
         body: PersistentTabView(context,
             controller: controller,
             backgroundColor: Theme.of(context).colorScheme.surface,
-            screens: [Container(), Container(), Container(), Container()],
-            floatingActionButton: Padding(
-                padding: const EdgeInsets.all(8),
-                child: FloatingActionButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const CameraPage())),
-                    child: const Icon(Icons.photo_camera_back))),
+            screens: [
+              const Overview(),
+              Container(),
+              Container(),
+              const ChatPage()
+            ],
             items: [
               PersistentBottomNavBarItem(
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
                   icon: const Icon(Icons.eco),
-                  title: 'Home'),
+                  title: 'Overview'),
               PersistentBottomNavBarItem(
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,

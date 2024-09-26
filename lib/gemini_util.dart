@@ -10,8 +10,12 @@ class GeminiUtil {
   static Future<String?> info(Uint8List image) async {
     String? info;
     try {
-      final candidates = await gemini
-          .textAndImage(text: "What is this picture?", images: [image]);
+      final candidates = await gemini.textAndImage(
+          text: '''Provide detailed information about the 
+          environmental impact of item(s) in the image. Include information 
+          on its carbon footprint, recycling methods, disposal options, 
+          and any alternative actions or products that are more sustainable''',
+          images: [image]);
       info = candidates?.content?.parts?.last.text;
     } catch (e) {
       logger.e(e.toString());
