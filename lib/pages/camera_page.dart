@@ -46,20 +46,22 @@ class _CameraPageState extends State<CameraPage> {
                 return const Center(child: CircularProgressIndicator());
               }
             }),
-        floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-              final file = await controller.takePicture();
-              final image = await file.readAsBytes();
-              setState(() => loading = true);
-              final info = await GeminiUtil.info(image);
-              setState(() => loading = false);
-              if (context.mounted) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ItemInfo(info: info)));
-              }
-            },
-            child: const Icon(Icons.camera_alt)));
+        floatingActionButton: loading
+            ? Container()
+            : FloatingActionButton(
+                onPressed: () async {
+                  final file = await controller.takePicture();
+                  final image = await file.readAsBytes();
+                  setState(() => loading = true);
+                  final info = await GeminiUtil.info(image);
+                  setState(() => loading = false);
+                  if (context.mounted) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ItemInfo(info: info)));
+                  }
+                },
+                child: const Icon(Icons.camera_alt)));
   }
 }
