@@ -40,7 +40,7 @@ class _CameraPageState extends State<CameraPage> {
                         const Center(
                             child: Opacity(
                                 opacity: 0.5,
-                                child: Icon(Icons.eco, color: Colors.white))),
+                                child: Icon(Icons.eco, color: Colors.white)))
                       ]);
               } else {
                 return const Center(child: CircularProgressIndicator());
