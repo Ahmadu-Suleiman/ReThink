@@ -35,17 +35,27 @@ class _OverviewPageState extends State<OverviewPage> {
   Widget get funFact => Card(
       child: Padding(
           padding: const EdgeInsets.all(14),
-          child: FutureBuilder(
-              future: GeminiUtil.funFact(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done &&
-                    snapshot.hasData) {
-                  return Markdown(
-                      shrinkWrap: true, selectable: true, data: snapshot.data!);
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              })));
+          child: Column(children: [
+            Text('Fun fact',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontWeight: FontWeight.bold)),
+            const Divider(),
+            FutureBuilder(
+                future: GeminiUtil.funFact(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done &&
+                      snapshot.hasData) {
+                    return Markdown(
+                        shrinkWrap: true,
+                        selectable: true,
+                        data: snapshot.data!);
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                })
+          ])));
 
   Widget get article {
     String article = Util

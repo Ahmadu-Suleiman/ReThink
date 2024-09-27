@@ -31,7 +31,7 @@ class GeminiUtil {
               'environmental protection that is relevant to an African '
               'audience. The fact should be interesting, informative, and '
               'easily digestible, with a cultural or historical context when '
-              'possible.');
+              'possible. Do not add a title.');
       fact = candidates?.content?.parts?.last.text;
     } catch (e) {
       logger.e(e.toString());

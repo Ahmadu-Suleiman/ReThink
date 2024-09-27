@@ -57,11 +57,11 @@ class Util {
     "https://www.ucsusa.org/climate-change",
     "https://www.edf.org/climate-change",
     "https://www.sierraclub.org/climate",
-    "https://www.nature.org/climate-change",
+    "https://www.nature.org ",
+    "https://www.nature.org/en-us/magazine/magazine-articles/planting-for-pollinators/",
     "https://www.greenpeace.org/usa/climate-change",
     "https://www.ucsusa.org/clean-energy",
     "https://www.edf.org/clean-energy",
     "https://www.sierraclub.org/clean-energy",
-    "https://www.nature.org/climate-change"
   ];
 }
