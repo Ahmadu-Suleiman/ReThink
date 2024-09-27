@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -72,7 +70,7 @@ class _ChatPageState extends State<ChatPage> {
                           .map((content) => chatBubble(content.role ?? 'model',
                               content.parts?.last.text ?? 'No output'))
                           .toList())))),
-      if ((Platform.isAndroid || Platform.isIOS) && contents.length == 1)
+      if (contents.length == 1)
         TextButton.icon(
             onPressed: openSMS,
             label: const Text('Offline? Use our SMS service instead'),

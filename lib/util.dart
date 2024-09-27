@@ -31,4 +31,37 @@ class Util {
     'Get enough sleep: Prioritize sleep to enhance your energy levels and focus.',
     'Spend time in nature: Connect with the natural world through activities like hiking, gardening, or simply enjoying outdoor spaces.'
   ];
+
+  static List<String> informativeArticles = [
+    "https://education.nationalgeographic.org/resource/resource-library-plastic-pollution",
+    "https://www.theguardian.com/environment/plastic",
+    "https://www.unep.org/",
+    "https://www.worldbank.org/en/topic/climatechange",
+    "https://www.treehugger.com/",
+    "https://www.greenpeace.org/international/",
+    "https://the.ethicalfashionforum.com/about-1",
+    "https://www.fashionrevolution.org/",
+    "https://www.futureoffood.ox.ac.uk/article/food-climate-research-network",
+    "https://eatforum.org/eat-lancet-commission/",
+    "https://techcrunch.com/",
+    "https://trellis.net/",
+    "https://350.org/",
+    "https://www.sunrisemovement.org/",
+    "https://www.epa.gov/climate-change",
+    "https://www.wwf.org/",
+    "https://www.ucsusa.org/",
+    "https://www.edf.org/",
+    "https://www.sierraclub.org/",
+    "https://www.nature.org/",
+    "https://www.greenpeace.org/usa/",
+    "https://www.ucsusa.org/climate-change",
+    "https://www.edf.org/climate-change",
+    "https://www.sierraclub.org/climate",
+    "https://www.nature.org/climate-change",
+    "https://www.greenpeace.org/usa/climate-change",
+    "https://www.ucsusa.org/clean-energy",
+    "https://www.edf.org/clean-energy",
+    "https://www.sierraclub.org/clean-energy",
+    "https://www.nature.org/climate-change"
+  ];
 }

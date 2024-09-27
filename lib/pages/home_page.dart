@@ -22,11 +22,11 @@ class HomePage extends StatelessWidget {
         body: PersistentTabView(context,
             controller: controller,
             backgroundColor: Theme.of(context).colorScheme.surface,
-            screens: [
-              const Overview(),
-              const LearnPage(),
+            screens: const [
+              Overview(),
+              LearnPage(),
               ChallengePage(),
-              const ChatPage()
+              ChatPage()
             ],
             items: [
               PersistentBottomNavBarItem(
