@@ -4,7 +4,7 @@ import 'package:rethink/pages/challenge_page.dart';
 import 'package:rethink/pages/chat_page.dart';
 import 'package:rethink/pages/learn_page.dart';
 
-import 'overview.dart';
+import 'overview_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             controller: controller,
             backgroundColor: Theme.of(context).colorScheme.surface,
             screens: const [
-              Overview(),
+              OverviewPage(),
               LearnPage(),
               ChallengePage(),
               ChatPage()

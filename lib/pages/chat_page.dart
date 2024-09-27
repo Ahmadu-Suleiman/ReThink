@@ -44,11 +44,7 @@ class _ChatPageState extends State<ChatPage> {
             Text(author == 'model' ? 'Thinker' : 'You',
                 textAlign: TextAlign.start,
                 style: const TextStyle(fontWeight: FontWeight.bold)),
-            Divider(
-                thickness: 0.1,
-                indent: 8,
-                endIndent: 8,
-                color: Theme.of(context).colorScheme.primary),
+            const Divider(),
             IgnorePointer(
                 child: Markdown(
                     padding: const EdgeInsets.all(0),

@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:intl/intl.dart';
 import 'package:rethink/gemini_util.dart';
 
 import '../util.dart';
 import 'camera_page.dart';
 
-class Overview extends StatefulWidget {
-  const Overview({super.key});
+class OverviewPage extends StatefulWidget {
+  const OverviewPage({super.key});
 
   @override
-  State<Overview> createState() => _OverviewState();
+  State<OverviewPage> createState() => _OverviewPageState();
 }
 
-class _OverviewState extends State<Overview> {
+class _OverviewPageState extends State<OverviewPage> {
   PreviewData? previewData;
   final random = Random();
 
@@ -49,19 +50,24 @@ class _OverviewState extends State<Overview> {
   Widget get article {
     String article = Util
         .informativeArticles[random.nextInt(Util.informativeArticles.length)];
-    return Container(
-        decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            color: Colors.white),
-        child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            child: LinkPreview(
-                enableAnimation: true,
-                onPreviewDataFetched: (data) =>
-                    setState(() => previewData = data),
-                previewData: previewData,
-                text: article,
-                width: double.infinity)));
+    return Card(
+        child: Padding(
+            padding: const EdgeInsets.all(14),
+            child: Column(children: [
+              Text('Picked for you',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold)),
+              const Divider(),
+              LinkPreview(
+                  enableAnimation: true,
+                  onPreviewDataFetched: (data) =>
+                      setState(() => previewData = data),
+                  previewData: previewData,
+                  text: article,
+                  width: double.infinity)
+            ])));
   }
 
   Widget get challenge {
@@ -70,9 +76,15 @@ class _OverviewState extends State<Overview> {
         child: Padding(
             padding: const EdgeInsets.all(14),
             child: Column(children: [
+              Text('Challenge for Today!',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold)),
+              const Divider(),
               CircleAvatar(child: Text('${date.day}')),
               Text(Util.dailyChallenges[0]),
-              Text('${date.month}/${date.day}')
+              Text(DateFormat.yMMMMEEEEd().format(date))
             ])));
   }
 }
