@@ -1,1 +1,25 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"rethink-2892c","appId":"1:370299394465:android:4364e807c5770d67b0d3e0","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"rethink-2892c","configurations":{"android":"1:370299394465:android:4364e807c5770d67b0d3e0","ios":"1:370299394465:ios:c7233a8cfc31c561b0d3e0","macos":"1:370299394465:ios:bcce57390f2494feb0d3e0","web":"1:370299394465:web:14e1eadd901fc0c3b0d3e0","windows":"1:370299394465:web:d7ca4f63ec749dbdb0d3e0"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "rethink-2892c",
+          "appId": "1:370299394465:android:4364e807c5770d67b0d3e0",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "rethink-2892c",
+          "configurations": {
+            "android": "1:370299394465:android:4364e807c5770d67b0d3e0",
+            "ios": "1:370299394465:ios:c7233a8cfc31c561b0d3e0",
+            "macos": "1:370299394465:ios:bcce57390f2494feb0d3e0",
+            "web": "1:370299394465:web:14e1eadd901fc0c3b0d3e0",
+            "windows": "1:370299394465:web:d7ca4f63ec749dbdb0d3e0"
+          }
+        }
+      }
+    }
+  }
+}

@@ -22,4 +22,20 @@ class GeminiUtil {
     }
     return info;
   }
+
+  static Future<String?> funFact() async {
+    String? fact;
+    try {
+      final candidates = await gemini
+          .text('Generate a daily fun fact related to sustainability or '
+              'environmental protection that is relevant to an African '
+              'audience. The fact should be interesting, informative, and '
+              'easily digestible, with a cultural or historical context when '
+              'possible.');
+      fact = candidates?.content?.parts?.last.text;
+    } catch (e) {
+      logger.e(e.toString());
+    }
+    return fact;
+  }
 }
