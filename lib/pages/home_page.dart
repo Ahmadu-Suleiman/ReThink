@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:rethink/pages/challenge_page.dart';
 import 'package:rethink/pages/chat_page.dart';
-import 'package:rethink/pages/profile_page.dart';
+import 'package:rethink/pages/learn_page.dart';
 
 import 'overview.dart';
 
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.surface,
             screens: [
               const Overview(),
-              const ProfilePage(),
+              const LearnPage(),
               ChallengePage(),
               const ChatPage()
             ],
@@ -37,8 +37,8 @@ class HomePage extends StatelessWidget {
               PersistentBottomNavBarItem(
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
-                  icon: const Icon(Icons.person),
-                  title: 'Profile'),
+                  icon: const Icon(Icons.school),
+                  title: 'Learn'),
               PersistentBottomNavBarItem(
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
