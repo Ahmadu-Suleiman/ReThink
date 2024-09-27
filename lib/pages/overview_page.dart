@@ -25,7 +25,7 @@ class _OverviewPageState extends State<OverviewPage> {
   Widget build(BuildContext context) {
     final items = [funFact, article, challenge];
     return Scaffold(
-        body: ListView(children: items),
+        body: ListView(padding: const EdgeInsets.all(12), children: items),
         floatingActionButton: FloatingActionButton(
             onPressed: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const CameraPage())),
@@ -92,8 +92,15 @@ class _OverviewPageState extends State<OverviewPage> {
                       .titleLarge
                       ?.copyWith(fontWeight: FontWeight.bold)),
               const Divider(),
-              CircleAvatar(child: Text('${date.day}')),
-              Text(Util.dailyChallenges[0]),
+              CircleAvatar(
+                  radius: 40,
+                  child: Text('${date.day}',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge
+                          ?.copyWith(fontWeight: FontWeight.bold))),
+              const SizedBox(height: 8),
+              Text(Util.dailyChallenges[0], textAlign: TextAlign.center),
               Text(DateFormat.yMMMMEEEEd().format(date))
             ])));
   }

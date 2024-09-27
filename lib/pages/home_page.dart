@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
                   icon: const Icon(Icons.event),
-                  title: 'Challenge'),
+                  title: 'Challenges'),
               PersistentBottomNavBarItem(
                   activeColorPrimary: Theme.of(context).colorScheme.primary,
                   inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
