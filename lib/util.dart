@@ -49,6 +49,8 @@ class Util {
     "https://www.sunrisemovement.org/",
     "https://www.epa.gov/climate-change",
     "https://www.wwf.org/",
+    "https://www.edf.org/issue/coastal-protection",
+    "https://www.edf.org/issue/sustainable-water-supply",
     "https://www.ucsusa.org/",
     "https://www.edf.org/",
     "https://www.sierraclub.org/",
@@ -61,7 +63,7 @@ class Util {
     "https://www.nature.org/en-us/magazine/magazine-articles/planting-for-pollinators/",
     "https://www.greenpeace.org/usa/climate-change",
     "https://www.ucsusa.org/clean-energy",
-    "https://www.edf.org/clean-energy",
-    "https://www.sierraclub.org/clean-energy",
+    "https://www.edf.org/issue/methane",
+    "https://www.sierraclub.org/clean-energy"
   ];
 }
