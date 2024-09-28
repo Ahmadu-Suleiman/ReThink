@@ -113,10 +113,6 @@ class _ChatPageState extends State<ChatPage> {
 
   void openSMS() async {
     final Uri launchUri = Uri.parse('sms:19122');
-    if (await canLaunchUrl(launchUri)) {
-      await launchUrl(launchUri);
-    } else {
-      throw 'Could not open SMS';
-    }
+    if (await canLaunchUrl(launchUri)) await launchUrl(launchUri);
   }
 }
