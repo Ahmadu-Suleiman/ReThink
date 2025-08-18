@@ -46,7 +46,10 @@ class _OverviewPageState extends State<OverviewPage> {
                       snapshot.hasData) {
                     return MarkdownBlock(
                         selectable: true, data: snapshot.data!);
-                  } else {
+                  } else if (snapshot.hasError) {
+                    print(snapshot.error);
+                    return Text('Error: ${snapshot.error}');
+                  }else {
                     return const Center(child: CircularProgressIndicator());
                   }
                 })

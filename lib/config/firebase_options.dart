@@ -17,17 +17,29 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,52 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCBaCt4yhMxc-laxbX5tzVBAoJy6ApJDnw',
-    appId: '1:370299394465:web:14e1eadd901fc0c3b0d3e0',
-    messagingSenderId: '370299394465',
-    projectId: 'rethink-2892c',
-    authDomain: 'rethink-2892c.firebaseapp.com',
-    storageBucket: 'rethink-2892c.firebasestorage.app',
-    measurementId: 'G-PK5YF4EN9D',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCpJfZYJwcrJby92hkcs-uY863r4cRQZv8',
-    appId: '1:370299394465:android:4364e807c5770d67b0d3e0',
-    messagingSenderId: '370299394465',
-    projectId: 'rethink-2892c',
-    storageBucket: 'rethink-2892c.firebasestorage.app',
+    apiKey: 'AIzaSyCkPgDKOcR_wtJYSEu40JBAQsXardzH4Ew',
+    appId: '1:757234541341:android:ca7ffaf26b87064a40f7f4',
+    messagingSenderId: '757234541341',
+    projectId: 'rethink-eco',
+    storageBucket: 'rethink-eco.firebasestorage.app',
   );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB8SlcO7zoMdn_5OLPgCN2GiRHODuGIhZg',
-    appId: '1:370299394465:ios:c7233a8cfc31c561b0d3e0',
-    messagingSenderId: '370299394465',
-    projectId: 'rethink-2892c',
-    storageBucket: 'rethink-2892c.firebasestorage.app',
-    iosClientId: '370299394465-vfk55nqesrqvf6ppupr68c8ls6jiprog.apps.googleusercontent.com',
-    iosBundleId: 'com.meta4projects.rethink',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB8SlcO7zoMdn_5OLPgCN2GiRHODuGIhZg',
-    appId: '1:370299394465:ios:bcce57390f2494feb0d3e0',
-    messagingSenderId: '370299394465',
-    projectId: 'rethink-2892c',
-    storageBucket: 'rethink-2892c.firebasestorage.app',
-    iosClientId: '370299394465-vrjvb3enqjohs5buad7q7rjiir46nn3l.apps.googleusercontent.com',
-    iosBundleId: 'com.example.rethink',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCBaCt4yhMxc-laxbX5tzVBAoJy6ApJDnw',
-    appId: '1:370299394465:web:d7ca4f63ec749dbdb0d3e0',
-    messagingSenderId: '370299394465',
-    projectId: 'rethink-2892c',
-    authDomain: 'rethink-2892c.firebaseapp.com',
-    storageBucket: 'rethink-2892c.firebasestorage.app',
-    measurementId: 'G-0YVVHNKWHL',
-  );
-
 }

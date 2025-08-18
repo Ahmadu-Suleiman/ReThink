@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "757234541341",
+    "project_id": "rethink-eco",
+    "storage_bucket": "rethink-eco.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757234541341:android:ca7ffaf26b87064a40f7f4",
+        "android_client_info": {
+          "package_name": "com.meta4projects.rethink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkPgDKOcR_wtJYSEu40JBAQsXardzH4Ew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

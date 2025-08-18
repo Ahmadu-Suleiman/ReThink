@@ -12,14 +12,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PersistentTabController controller =
-        PersistentTabController(initialIndex: 0);
     return Scaffold(
         appBar: AppBar(
             title: Text('ReThink',
                 style: context.appTitleStyle?.addColor(context.primary)?.bold)),
         body: PersistentTabView(context,
-            controller: controller,
+            controller: PersistentTabController(initialIndex: 0),
             backgroundColor: context.colorScheme.surface,
             screens: const [
               OverviewPage(),

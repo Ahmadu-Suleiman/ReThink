@@ -5,7 +5,6 @@ import 'package:firebase_ai/firebase_ai.dart';
 class Gemini {
   const Gemini._();
 
-  // Changed from _model to model to make it accessible
   static final model =
       FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
@@ -25,7 +24,7 @@ class Gemini {
     final prompt = TextPart(_imagePrompt);
     final imagePart = InlineDataPart('image/jpeg', image);
 
-    final response = await model.generateContent([ // Use public model
+    final response = await model.generateContent([
       Content.multi([prompt, imagePart])
     ]);
     return response.text;

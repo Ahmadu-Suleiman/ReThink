@@ -15,7 +15,7 @@ class Routes {
   static const challengePage = 'challenge';
   static const chatPage = 'chat';
   static const learnPage = 'learn';
-  static const itemInfoPage = 'itemInfo';
+  static const itemInfoPage = 'item-info';
 
   static const id = 'id';
 
@@ -48,8 +48,8 @@ class Routes {
               builder: (context, state) => LearnPage(),
             ),
             GoRoute(
-                path: chatPage,
-                name: chatPage,
+                path: itemInfoPage,
+                name: itemInfoPage,
                 builder: (context, state) {
                   final info = state.extra as String?;
                   return ItemInfoPage(info: info);

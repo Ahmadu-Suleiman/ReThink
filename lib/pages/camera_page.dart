@@ -1,7 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rethink/config/extensions.dart';
 import 'package:rethink/config/gemini.dart';
-import 'package:rethink/pages/item_info_page.dart';
+
+import '../config/routes.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
@@ -37,17 +40,18 @@ class _CameraPageState extends State<CameraPage> {
                     ? const Center(child: CircularProgressIndicator())
                     : Stack(fit: StackFit.expand, children: [
                         CameraPreview(controller),
-                        const Center(
+                        Center(
                             child: Opacity(
                                 opacity: 0.5,
-                                child: Icon(Icons.eco, color: Colors.white)))
+                                child: Icon(Icons.eco,
+                                    color: context.colorScheme.surface)))
                       ]);
               } else {
                 return const Center(child: CircularProgressIndicator());
               }
             }),
         floatingActionButton: loading
-            ? Container()
+            ? SizedBox.shrink()
             : FloatingActionButton(
                 onPressed: () async {
                   final file = await controller.takePicture();
@@ -56,10 +60,7 @@ class _CameraPageState extends State<CameraPage> {
                   final info = await Gemini.info(image);
                   setState(() => loading = false);
                   if (context.mounted) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ItemInfoPage(info: info)));
+                    context.pushNamed(Routes.itemInfoPage, extra: info);
                   }
                 },
                 child: const Icon(Icons.camera_alt)));
