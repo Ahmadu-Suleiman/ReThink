@@ -1,14 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
+import 'package:flutter_chat_core/flutter_chat_core.dart' show LinkPreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:markdown_widget/markdown_widget.dart';
+import 'package:rethink/config/extensions.dart';
 import 'package:rethink/config/gemini.dart';
+import 'package:rethink/config/routes.dart';
 
 import '../util.dart';
-import 'camera_page.dart';
 
 class OverviewPage extends StatefulWidget {
   const OverviewPage({super.key});
@@ -18,7 +20,7 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-  PreviewData? previewData;
+  LinkPreviewData? previewData;
   final random = Random();
 
   @override
@@ -27,8 +29,7 @@ class _OverviewPageState extends State<OverviewPage> {
     return Scaffold(
         body: ListView(padding: const EdgeInsets.all(12), children: items),
         floatingActionButton: FloatingActionButton(
-            onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const CameraPage())),
+            onPressed: () => context.pushNamed(Routes.cameraPage),
             child: const Icon(Icons.photo_camera_back)));
   }
 
@@ -36,21 +37,15 @@ class _OverviewPageState extends State<OverviewPage> {
       child: Padding(
           padding: const EdgeInsets.all(14),
           child: Column(children: [
-            Text('Fun fact',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(fontWeight: FontWeight.bold)),
+            Text('Fun fact', style: context.titleStyle),
             const Divider(),
             FutureBuilder(
-                future: Gemini.funFact(),
+                future: Gemini.funFact,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done &&
                       snapshot.hasData) {
-                    return Markdown(
-                        shrinkWrap: true,
-                        selectable: true,
-                        data: snapshot.data!);
+                    return MarkdownBlock(
+                        selectable: true, data: snapshot.data!);
                   } else {
                     return const Center(child: CircularProgressIndicator());
                   }
@@ -58,25 +53,21 @@ class _OverviewPageState extends State<OverviewPage> {
           ])));
 
   Widget get article {
-    String article = Util
+    final article = Util
         .informativeArticles[random.nextInt(Util.informativeArticles.length)];
     return Card(
         child: Padding(
-            padding: const EdgeInsets.all(14),
+            padding: context.pagePadding,
             child: Column(children: [
-              Text('Picked for you',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(fontWeight: FontWeight.bold)),
+              Text('Picked for you', style: context.titleStyle),
               const Divider(),
               LinkPreview(
                   enableAnimation: true,
-                  onPreviewDataFetched: (data) =>
+                  onLinkPreviewDataFetched: (data) =>
                       setState(() => previewData = data),
-                  previewData: previewData,
+                  linkPreviewData: previewData,
                   text: article,
-                  width: double.infinity)
+                  maxWidth: double.infinity)
             ])));
   }
 
@@ -85,21 +76,12 @@ class _OverviewPageState extends State<OverviewPage> {
     return Card(
         child: Padding(
             padding: const EdgeInsets.all(14),
-            child: Column(children: [
-              Text('Challenge for Today!',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(fontWeight: FontWeight.bold)),
+            child: Column(spacing: 12, children: [
+              Text('Challenge for Today!', style: context.titleStyle),
               const Divider(),
               CircleAvatar(
                   radius: 40,
-                  child: Text('${date.day}',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineLarge
-                          ?.copyWith(fontWeight: FontWeight.bold))),
-              const SizedBox(height: 8),
+                  child: Text('${date.day}', style: context.bodyStyle)),
               Text(Util.dailyChallenges[0], textAlign: TextAlign.center),
               Text(DateFormat.yMMMMEEEEd().format(date))
             ])));
