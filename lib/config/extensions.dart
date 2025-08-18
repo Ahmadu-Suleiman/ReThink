@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 extension TextStyleExtensions on TextStyle {
@@ -43,7 +41,7 @@ extension BuildContextExtensions on BuildContext {
 
   TextStyle? get bodyStyle => textTheme.bodyMedium;
 
-  TextStyle? get titleStyle => textTheme.titleLarge;
+  TextStyle? get titleStyle => textTheme.titleLarge?.bold;
 
   TextStyle? get actionStyle => textTheme.bodyLarge;
 }

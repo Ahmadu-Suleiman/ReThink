@@ -16,9 +16,9 @@ class Gemini {
   static final _funFactPrompt =
       'Generate a daily fun fact related to sustainability or '
       'environmental protection that is relevant to an African '
-      'audience. The fact should be interesting, informative, and '
-      'easily digestible, with a cultural or historical context when '
-      'possible. Do not add a title.';
+      'audience, especially Nigeria. The fact should be interesting, '
+      'informative, and easily digestible, with a cultural or '
+      'historical context when possible. Do not add a title.';
 
   static Future<String?> info(Uint8List image) async {
     final prompt = TextPart(_imagePrompt);

@@ -10,7 +10,7 @@ import 'package:rethink/config/extensions.dart';
 import 'package:rethink/config/gemini.dart';
 import 'package:rethink/config/routes.dart';
 
-import '../util.dart';
+import '../lists.dart';
 
 class OverviewPage extends StatefulWidget {
   const OverviewPage({super.key});
@@ -56,8 +56,8 @@ class _OverviewPageState extends State<OverviewPage> {
           ])));
 
   Widget get article {
-    final article = Util
-        .informativeArticles[random.nextInt(Util.informativeArticles.length)];
+    final article = Lists
+        .informativeArticles[random.nextInt(Lists.informativeArticles.length)];
     return Card(
         child: Padding(
             padding: context.pagePadding,
@@ -85,7 +85,7 @@ class _OverviewPageState extends State<OverviewPage> {
               CircleAvatar(
                   radius: 40,
                   child: Text('${date.day}', style: context.bodyStyle)),
-              Text(Util.dailyChallenges[0], textAlign: TextAlign.center),
+              Text(Lists.dailyChallenges[0], textAlign: TextAlign.center),
               Text(DateFormat.yMMMMEEEEd().format(date))
             ])));
   }

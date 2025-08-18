@@ -3,7 +3,7 @@ import 'package:flutter_chat_core/flutter_chat_core.dart' show LinkPreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:rethink/config/extensions.dart';
 
-import '../util.dart';
+import '../lists.dart';
 
 class LearnPage extends StatefulWidget {
   const LearnPage({super.key});
@@ -18,18 +18,18 @@ class _LearnPageState extends State<LearnPage> {
   @override
   void initState() {
     super.initState();
-    Util.informativeArticles.shuffle();
+    Lists.informativeArticles.shuffle();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView.builder(
-            itemCount: Util.informativeArticles.length,
+            itemCount: Lists.informativeArticles.length,
             itemBuilder: (context, index) => Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                    key: ValueKey(Util.informativeArticles[index]),
+                    key: ValueKey(Lists.informativeArticles[index]),
                     margin: context.pagePadding,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -42,11 +42,11 @@ class _LearnPageState extends State<LearnPage> {
                             onLinkPreviewDataFetched: (data) => setState(() =>
                                 this.data = {
                                   ...this.data,
-                                  Util.informativeArticles[index]: data
+                                  Lists.informativeArticles[index]: data
                                 }),
                             linkPreviewData:
-                                data[Util.informativeArticles[index]],
-                            text: Util.informativeArticles[index],
+                                data[Lists.informativeArticles[index]],
+                            text: Lists.informativeArticles[index],
                             maxWidth: double.infinity))))));
   }
 }
