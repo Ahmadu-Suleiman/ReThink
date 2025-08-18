@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:rethink/gemini.dart';
+import 'package:rethink/config/gemini.dart';
 import 'package:rethink/pages/item_info_page.dart';
 
 class CameraPage extends StatefulWidget {
@@ -59,7 +59,7 @@ class _CameraPageState extends State<CameraPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ItemInfo(info: info)));
+                            builder: (context) => ItemInfoPage(info: info)));
                   }
                 },
                 child: const Icon(Icons.camera_alt)));

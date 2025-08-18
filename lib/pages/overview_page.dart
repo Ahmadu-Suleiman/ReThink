@@ -5,7 +5,7 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
-import 'package:rethink/gemini.dart';
+import 'package:rethink/config/gemini.dart';
 
 import '../util.dart';
 import 'camera_page.dart';

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:markdown_widget/markdown_widget.dart';
+import 'package:rethink/config/extensions.dart';
 
-class ItemInfo extends StatelessWidget {
-  const ItemInfo({super.key, required this.info});
+class ItemInfoPage extends StatelessWidget {
+  const ItemInfoPage({super.key, required this.info});
 
   final String? info;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Markdown(
-            padding: const EdgeInsets.all(12),
-            selectable: true,
-            data: info ?? 'No info available\n🤢'));
+        body: Padding(
+      padding: context.pagePadding,
+      child: MarkdownBlock(
+          selectable: true, data: info ?? 'No info available\n🤢'),
+    ));
   }
 }

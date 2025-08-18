@@ -32,7 +32,7 @@ class Util {
     'Spend time in nature: Connect with the natural world through activities like hiking, gardening, or simply enjoying outdoor spaces.'
   ];
 
-  static List<String> informativeArticles = [
+  static List<String> informativeArticles = [ //todo
     "https://education.nationalgeographic.org/resource/resource-library-plastic-pollution",
     "https://www.theguardian.com/environment/plastic",
     "https://www.unep.org/",

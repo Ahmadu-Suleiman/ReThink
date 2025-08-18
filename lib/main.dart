@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rethink/pages/home_page.dart';
 
-import 'firebase/firebase_options.dart';
+import 'config/firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  Gemini.init(apiKey: dotenv.env['GEMINI_KEY'] ?? '');
   runApp(const App());
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
+import 'package:flutter_chat_core/flutter_chat_core.dart' show LinkPreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
+import 'package:rethink/config/extensions.dart';
 
 import '../util.dart';
 
@@ -12,7 +13,7 @@ class LearnPage extends StatefulWidget {
 }
 
 class _LearnPageState extends State<LearnPage> {
-  Map<String, PreviewData> datas = {};
+  Map<String, LinkPreviewData> data = {};
 
   @override
   void initState() {
@@ -29,22 +30,23 @@ class _LearnPageState extends State<LearnPage> {
                 alignment: Alignment.centerLeft,
                 child: Container(
                     key: ValueKey(Util.informativeArticles[index]),
-                    margin: const EdgeInsets.all(16),
-                    decoration: const BoxDecoration(
+                    margin: context.pagePadding,
+                    decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
-                        color: Colors.white),
+                        color: context.colorScheme.surface),
                     child: ClipRRect(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(20)),
                         child: LinkPreview(
                             enableAnimation: true,
-                            onPreviewDataFetched: (data) => setState(() =>
-                                datas = {
-                                  ...datas,
+                            onLinkPreviewDataFetched: (data) => setState(() =>
+                                this.data = {
+                                  ...this.data,
                                   Util.informativeArticles[index]: data
                                 }),
-                            previewData: datas[Util.informativeArticles[index]],
+                            linkPreviewData:
+                                data[Util.informativeArticles[index]],
                             text: Util.informativeArticles[index],
-                            width: double.infinity))))));
+                            maxWidth: double.infinity))))));
   }
 }
