@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:rethink/gemini_util.dart';
+import 'package:rethink/gemini.dart';
 import 'package:rethink/pages/item_info_page.dart';
 
 class CameraPage extends StatefulWidget {
@@ -53,7 +53,7 @@ class _CameraPageState extends State<CameraPage> {
                   final file = await controller.takePicture();
                   final image = await file.readAsBytes();
                   setState(() => loading = true);
-                  final info = await GeminiUtil.info(image);
+                  final info = await Gemini.info(image);
                   setState(() => loading = false);
                   if (context.mounted) {
                     Navigator.push(

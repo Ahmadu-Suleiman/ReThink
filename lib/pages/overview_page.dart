@@ -5,7 +5,7 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
-import 'package:rethink/gemini_util.dart';
+import 'package:rethink/gemini.dart';
 
 import '../util.dart';
 import 'camera_page.dart';
@@ -43,7 +43,7 @@ class _OverviewPageState extends State<OverviewPage> {
                     ?.copyWith(fontWeight: FontWeight.bold)),
             const Divider(),
             FutureBuilder(
-                future: GeminiUtil.funFact(),
+                future: Gemini.funFact(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done &&
                       snapshot.hasData) {

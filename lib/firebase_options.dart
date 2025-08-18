@@ -46,7 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '370299394465',
     projectId: 'rethink-2892c',
     authDomain: 'rethink-2892c.firebaseapp.com',
-    storageBucket: 'rethink-2892c.appspot.com',
+    storageBucket: 'rethink-2892c.firebasestorage.app',
     measurementId: 'G-PK5YF4EN9D',
   );
 
@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
     appId: '1:370299394465:android:4364e807c5770d67b0d3e0',
     messagingSenderId: '370299394465',
     projectId: 'rethink-2892c',
-    storageBucket: 'rethink-2892c.appspot.com',
+    storageBucket: 'rethink-2892c.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
     appId: '1:370299394465:ios:c7233a8cfc31c561b0d3e0',
     messagingSenderId: '370299394465',
     projectId: 'rethink-2892c',
-    storageBucket: 'rethink-2892c.appspot.com',
+    storageBucket: 'rethink-2892c.firebasestorage.app',
     iosClientId: '370299394465-vfk55nqesrqvf6ppupr68c8ls6jiprog.apps.googleusercontent.com',
     iosBundleId: 'com.meta4projects.rethink',
   );
@@ -73,7 +73,7 @@ class DefaultFirebaseOptions {
     appId: '1:370299394465:ios:bcce57390f2494feb0d3e0',
     messagingSenderId: '370299394465',
     projectId: 'rethink-2892c',
-    storageBucket: 'rethink-2892c.appspot.com',
+    storageBucket: 'rethink-2892c.firebasestorage.app',
     iosClientId: '370299394465-vrjvb3enqjohs5buad7q7rjiir46nn3l.apps.googleusercontent.com',
     iosBundleId: 'com.example.rethink',
   );
@@ -84,7 +84,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '370299394465',
     projectId: 'rethink-2892c',
     authDomain: 'rethink-2892c.firebaseapp.com',
-    storageBucket: 'rethink-2892c.appspot.com',
+    storageBucket: 'rethink-2892c.firebasestorage.app',
     measurementId: 'G-0YVVHNKWHL',
   );
 

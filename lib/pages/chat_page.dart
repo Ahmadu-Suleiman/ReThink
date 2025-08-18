@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:rethink/gemini_util.dart';
+import 'package:rethink/gemini.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ChatPage extends StatefulWidget {
@@ -28,7 +28,7 @@ class _ChatPageState extends State<ChatPage> {
   Future<void> sendMessage(String message) async {
     contents.add(Content(parts: [Parts(text: message)], role: 'user'));
 
-    final response = await GeminiUtil.gemini.chat(contents);
+    final response = await Gemini.gemini.chat(contents);
     final responseText = response?.output ?? 'No output';
     contents.add(Content(parts: [Parts(text: responseText)], role: 'model'));
   }
