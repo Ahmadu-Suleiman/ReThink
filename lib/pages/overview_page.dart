@@ -47,16 +47,15 @@ class _OverviewPageState extends State<OverviewPage> {
                     return MarkdownBlock(
                         selectable: true, data: snapshot.data!);
                   } else if (snapshot.hasError) {
-                    print(snapshot.error);
                     return Text('Error: ${snapshot.error}');
-                  }else {
+                  } else {
                     return const Center(child: CircularProgressIndicator());
                   }
                 })
           ])));
 
   Widget get article {
-    final article = Lists
+    final articleUrl = Lists
         .informativeArticles[random.nextInt(Lists.informativeArticles.length)];
     return Card(
         child: Padding(
@@ -69,7 +68,7 @@ class _OverviewPageState extends State<OverviewPage> {
                   onLinkPreviewDataFetched: (data) =>
                       setState(() => previewData = data),
                   linkPreviewData: previewData,
-                  text: article,
+                  text: articleUrl,
                   maxWidth: double.infinity)
             ])));
   }

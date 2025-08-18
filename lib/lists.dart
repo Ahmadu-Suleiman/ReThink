@@ -58,59 +58,37 @@ class Lists {
   ];
 
   static List<String> informativeArticles = [
-    // Nigerian Environmental Organizations
-    "https://www.greenbeltnigeria.org/",
-    "https://www.nigeriaconservation.org/",
-    "https://www.environmentrights.org/",
-
-    // African Climate Research and News
-    "https://www.climatecentreafrica.org/",
-    "https://www.afdb.org/en/topics/climate-change",
-    "https://www.uneca.org/climate-change",
-    "https://www.nepad.org/climate-change-and-environment",
-    "https://www.cgiar.org/news-events/news/climate-change-africa/",
-
-    // Regional Environmental Issues
-    "https://www.bbc.com/news/topics/cmj34zmwm1zt/nigeria-environment",
-    "https://www.premiumtimesng.com/news/headlines?s=environment",
-    "https://punchng.com/topics/environment/",
-    "https://www.vanguardngr.com/news/environment/",
-
-    // Desertification and Sahel Issues
-    "https://www.unccd.int/actions/great-green-wall-initiative",
-    "https://www.greenwall.gov.ng/",
-    "https://www.fao.org/land-water/land/land-governance/land-resources-planning-toolbox/category/details/en/c/1026563/",
-
-    // African Renewable Energy
-    "https://www.irena.org/regions/Africa",
-    "https://africa-energy-portal.org/",
-    "https://www.rea.gov.ng/",
-    "https://www.power-technology.com/features/solar-power-africa/",
-
-    // Water and Agriculture
-    "https://www.fadama.net/",
-    "https://www.ifad.org/en/web/operations/w/country/nigeria",
-    "https://www.wateraid.org/ng/",
-    "https://www.unicef.org/nigeria/water-sanitation-and-hygiene",
-
-    // African Climate Science
-    "https://journals.co.za/journal/sajs",
-    "https://www.ajol.info/index.php/jasem",
-    "https://www.wascal.org/",
-
-    // Regional Organizations
-    "https://www.ecowas.int/about-ecowas/history-of-ecowas/environment/",
-    "https://www.au.int/en/issues/environment",
-    "https://www.unep.org/regions/africa",
-
-    // Nigerian Government Initiatives
-    "https://climatechange.gov.ng/",
-    "https://www.nimet.gov.ng/",
-    "https://www.forestry.gov.ng/",
-    "https://www.environment.gov.ng/",
-
-    // Sustainable Development in Nigeria
-    "https://www.ng.undp.org/content/nigeria/en/home/sustainable-development-goals.html",
-    "https://sdgactioncampaign.org/countries/nigeria/"
+    "https://education.nationalgeographic.org/resource/resource-library-plastic-pollution",
+    "https://www.theguardian.com/environment/plastic",
+    "https://www.unep.org/",
+    "https://www.worldbank.org/en/topic/climatechange",
+    "https://www.treehugger.com/",
+    "https://www.greenpeace.org/international/",
+    "https://the.ethicalfashionforum.com/about-1",
+    "https://www.fashionrevolution.org/",
+    "https://www.futureoffood.ox.ac.uk/article/food-climate-research-network",
+    "https://eatforum.org/eat-lancet-commission/",
+    "https://techcrunch.com/",
+    "https://trellis.net/",
+    "https://350.org/",
+    "https://www.sunrisemovement.org/",
+    "https://www.epa.gov/climate-change",
+    "https://www.wwf.org/",
+    "https://www.edf.org/issue/coastal-protection",
+    "https://www.edf.org/issue/sustainable-water-supply",
+    "https://www.ucsusa.org/",
+    "https://www.edf.org/",
+    "https://www.sierraclub.org/",
+    "https://www.nature.org/",
+    "https://www.greenpeace.org/usa/",
+    "https://www.ucsusa.org/climate-change",
+    "https://www.edf.org/climate-change",
+    "https://www.sierraclub.org/climate",
+    "https://www.nature.org ",
+    "https://www.nature.org/en-us/magazine/magazine-articles/planting-for-pollinators/",
+    "https://www.greenpeace.org/usa/climate-change",
+    "https://www.ucsusa.org/clean-energy",
+    "https://www.edf.org/issue/methane",
+    "https://www.sierraclub.org/clean-energy"
   ];
 }

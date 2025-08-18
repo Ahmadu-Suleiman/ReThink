@@ -13,7 +13,7 @@ class LearnPage extends StatefulWidget {
 }
 
 class _LearnPageState extends State<LearnPage> {
-  Map<String, LinkPreviewData> data = {};
+  Map<String, LinkPreviewData?> data = {};
 
   @override
   void initState() {
@@ -24,29 +24,33 @@ class _LearnPageState extends State<LearnPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView.builder(
-            itemCount: Lists.informativeArticles.length,
-            itemBuilder: (context, index) => Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                    key: ValueKey(Lists.informativeArticles[index]),
-                    margin: context.pagePadding,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        color: context.colorScheme.surface),
-                    child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                        child: LinkPreview(
-                            enableAnimation: true,
-                            onLinkPreviewDataFetched: (data) => setState(() =>
-                                this.data = {
-                                  ...this.data,
-                                  Lists.informativeArticles[index]: data
-                                }),
-                            linkPreviewData:
-                                data[Lists.informativeArticles[index]],
-                            text: Lists.informativeArticles[index],
-                            maxWidth: double.infinity))))));
+      body: Padding(
+        padding: context.pagePadding,
+        child: ListView.separated(
+          itemCount: Lists.informativeArticles.length,
+          itemBuilder: (context, index) {
+            final articleUrl = Lists.informativeArticles[index];
+            return DecoratedBox(
+              key: ValueKey(articleUrl),
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  color: context.colorScheme.surface),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                child: LinkPreview(
+                  enableAnimation: true,
+                  onLinkPreviewDataFetched: (previewData) =>
+                      setState(() => data = {...data, articleUrl: previewData}),
+                  linkPreviewData: data[articleUrl],
+                  text: articleUrl,
+                  maxWidth: double.infinity,
+                ),
+              ),
+            );
+          },
+          separatorBuilder: (_, index) => const Divider(),
+        ),
+      ),
+    );
   }
 }

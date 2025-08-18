@@ -12,7 +12,8 @@ class Gemini {
       'Provide detailed information about the environmental impact '
       'of item(s) in the image. Include information on its carbon '
       'footprint, recycling methods, disposal options, and any '
-      'alternative actions or products that are more sustainable';
+      'alternative actions or products that are more sustainable.'
+      'Consider the region to be Africa, especially Nigeria.';
   static final _funFactPrompt =
       'Generate a daily fun fact related to sustainability or '
       'environmental protection that is relevant to an African '
