@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:rethink/config/extensions.dart';
 import 'package:rethink/pages/challenge_page.dart';
 import 'package:rethink/pages/chat_page.dart';
 import 'package:rethink/pages/learn_page.dart';
@@ -16,12 +17,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: Text('ReThink',
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.bold))),
+                style: context.appTitleStyle?.addColor(context.primary)?.bold)),
         body: PersistentTabView(context,
             controller: controller,
-            backgroundColor: Theme.of(context).colorScheme.surface,
+            backgroundColor: context.colorScheme.surface,
             screens: const [
               OverviewPage(),
               LearnPage(),
@@ -30,23 +29,23 @@ class HomePage extends StatelessWidget {
             ],
             items: [
               PersistentBottomNavBarItem(
-                  activeColorPrimary: Theme.of(context).colorScheme.primary,
-                  inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
+                  activeColorPrimary: context.primary,
+                  inactiveColorPrimary: context.colorScheme.secondary,
                   icon: const Icon(Icons.eco),
                   title: 'Overview'),
               PersistentBottomNavBarItem(
-                  activeColorPrimary: Theme.of(context).colorScheme.primary,
-                  inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
+                  activeColorPrimary: context.primary,
+                  inactiveColorPrimary: context.colorScheme.secondary,
                   icon: const Icon(Icons.school),
                   title: 'Learn'),
               PersistentBottomNavBarItem(
-                  activeColorPrimary: Theme.of(context).colorScheme.primary,
-                  inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
+                  activeColorPrimary: context.primary,
+                  inactiveColorPrimary: context.colorScheme.secondary,
                   icon: const Icon(Icons.event),
                   title: 'Challenges'),
               PersistentBottomNavBarItem(
-                  activeColorPrimary: Theme.of(context).colorScheme.primary,
-                  inactiveColorPrimary: Theme.of(context).colorScheme.secondary,
+                  activeColorPrimary: context.primary,
+                  inactiveColorPrimary: context.colorScheme.secondary,
                   icon: const Icon(Icons.chat),
                   title: 'Chat')
             ]));
