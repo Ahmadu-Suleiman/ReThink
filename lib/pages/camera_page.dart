@@ -43,8 +43,15 @@ class _CameraPageState extends State<CameraPage> {
                         Center(
                             child: Opacity(
                                 opacity: 0.5,
-                                child: Icon(Icons.eco,
-                                    color: context.colorScheme.surface)))
+                                child: Column(
+                                  spacing: 8,
+                                  children: [
+                                    Text('Make sure item is within frame',
+                                        textAlign: TextAlign.center),
+                                    Icon(Icons.eco,
+                                        color: context.colorScheme.surface),
+                                  ],
+                                )))
                       ]);
               } else {
                 return const Center(child: CircularProgressIndicator());
