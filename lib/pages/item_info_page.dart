@@ -10,10 +10,14 @@ class ItemInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-      padding: context.pagePadding,
-      child: MarkdownBlock(
-          selectable: true, data: info ?? 'No info available\n🤢'),
+        body: SafeArea(
+      child: Padding(
+        padding: context.pagePadding,
+        child: SingleChildScrollView(
+          child: MarkdownBlock(
+              selectable: true, data: info ?? 'No info available\n🤢'),
+        ),
+      ),
     ));
   }
 }

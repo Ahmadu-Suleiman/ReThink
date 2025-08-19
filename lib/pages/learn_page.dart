@@ -24,31 +24,33 @@ class _LearnPageState extends State<LearnPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: context.pagePadding,
-        child: ListView.separated(
-          itemCount: Lists.informativeArticles.length,
-          itemBuilder: (context, index) {
-            final articleUrl = Lists.informativeArticles[index];
-            return DecoratedBox(
-              key: ValueKey(articleUrl),
-              decoration: BoxDecoration(
+      body: SafeArea(
+        child: Padding(
+          padding: context.pagePadding,
+          child: ListView.separated(
+            itemCount: Lists.informativeArticles.length,
+            itemBuilder: (context, index) {
+              final articleUrl = Lists.informativeArticles[index];
+              return DecoratedBox(
+                key: ValueKey(articleUrl),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    color: context.colorScheme.surface),
+                child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  color: context.colorScheme.surface),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
-                child: LinkPreview(
-                  enableAnimation: true,
-                  onLinkPreviewDataFetched: (previewData) =>
-                      setState(() => data = {...data, articleUrl: previewData}),
-                  linkPreviewData: data[articleUrl],
-                  text: articleUrl,
-                  maxWidth: double.infinity,
+                  child: LinkPreview(
+                    enableAnimation: true,
+                    onLinkPreviewDataFetched: (previewData) => setState(
+                        () => data = {...data, articleUrl: previewData}),
+                    linkPreviewData: data[articleUrl],
+                    text: articleUrl,
+                    maxWidth: double.infinity,
+                  ),
                 ),
-              ),
-            );
-          },
-          separatorBuilder: (_, index) => const Divider(),
+              );
+            },
+            separatorBuilder: (_, index) => const Divider(),
+          ),
         ),
       ),
     );

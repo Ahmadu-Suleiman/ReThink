@@ -8,14 +8,16 @@ class ChallengePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView.builder(
-            itemCount: Lists.dailyChallenges.length,
-            itemBuilder: (context, index) {
-              DateTime date = DateTime.now().add(Duration(days: index));
-              return ListTile(
-                  leading: CircleAvatar(child: Text('${date.day}')),
-                  title: Text(Lists.dailyChallenges[index]),
-                  subtitle: Text('${date.month}/${date.day}'));
-            }));
+        body: SafeArea(
+          child: ListView.builder(
+              itemCount: Lists.dailyChallenges.length,
+              itemBuilder: (context, index) {
+                DateTime date = DateTime.now().add(Duration(days: index));
+                return ListTile(
+                    leading: CircleAvatar(child: Text('${date.day}')),
+                    title: Text(Lists.dailyChallenges[index]),
+                    subtitle: Text('${date.month}/${date.day}'));
+              }),
+        ));
   }
 }

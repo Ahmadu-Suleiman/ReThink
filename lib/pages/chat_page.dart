@@ -64,79 +64,81 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(children: [
-      Expanded(
-          child: SingleChildScrollView(
-              controller: scrollController,
-              child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                      // Render messages from the local 'contents' list
-                      children: contents.map((content) {
-                    // Extract text from the first part, assuming text content
-                    final text = content.parts
-                            .whereType<TextPart>()
-                            .map((part) => part.text)
-                            .join(
-                                '\n') // Join if multiple text parts, though usually one for chat
-                        ??
-                        'No text content';
-                    return chatBubble(
-                        content.role ?? 'model',
-                        // Default to model if role is null
-                        text);
-                  }).toList())))),
-      if (contents.length <=
-          1) // Show SMS button if only initial message is present
-        TextButton.icon(
-            onPressed: openSMS,
-            label: const Text('Offline? Use our SMS service instead'),
-            icon: const Icon(Icons.sms)),
-      Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(children: [
-            Expanded(
-                child: TextField(
-                    controller: controller,
-                    maxLines: null,
-                    decoration: InputDecoration(
-                        hintText: 'Type a message',
-                        suffixIcon: IconButton(
-                            icon: loading
-                                ? const CircularProgressIndicator()
-                                : const Icon(Icons.send),
-                            onPressed: loading
-                                ? null
-                                : () async {
-                                    String text = controller.text;
-                                    if (text.isEmpty)
-                                      return; // Don't send empty messages
-                                    setState(() {
-                                      loading = true;
-                                      controller.text = '';
-                                    });
-                                    await sendMessage(text);
-                                    setState(() => loading = false);
-                                    // Scroll to bottom after message is sent and UI updated
-                                    WidgetsBinding.instance
-                                        .addPostFrameCallback((_) {
-                                      if (scrollController.hasClients) {
-                                        scrollController.animateTo(
-                                            scrollController
-                                                .position.maxScrollExtent,
-                                            duration: const Duration(
-                                                milliseconds: 300),
-                                            curve: Curves.easeOut);
-                                      }
-                                    });
-                                  }),
-                        filled: true,
-                        fillColor: context.colorScheme.secondaryContainer,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide.none))))
-          ]))
-    ]));
+        body: SafeArea(
+          child: Column(children: [
+                Expanded(
+            child: SingleChildScrollView(
+                controller: scrollController,
+                child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                        // Render messages from the local 'contents' list
+                        children: contents.map((content) {
+                      // Extract text from the first part, assuming text content
+                      final text = content.parts
+                              .whereType<TextPart>()
+                              .map((part) => part.text)
+                              .join(
+                                  '\n') // Join if multiple text parts, though usually one for chat
+                          ??
+                          'No text content';
+                      return chatBubble(
+                          content.role ?? 'model',
+                          // Default to model if role is null
+                          text);
+                    }).toList())))),
+                if (contents.length <=
+            1) // Show SMS button if only initial message is present
+          TextButton.icon(
+              onPressed: openSMS,
+              label: const Text('Offline? Use our SMS service instead'),
+              icon: const Icon(Icons.sms)),
+                Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(children: [
+              Expanded(
+                  child: TextField(
+                      controller: controller,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                          hintText: 'Type a message',
+                          suffixIcon: IconButton(
+                              icon: loading
+                                  ? const CircularProgressIndicator()
+                                  : const Icon(Icons.send),
+                              onPressed: loading
+                                  ? null
+                                  : () async {
+                                      String text = controller.text;
+                                      if (text.isEmpty)
+                                        return; // Don't send empty messages
+                                      setState(() {
+                                        loading = true;
+                                        controller.text = '';
+                                      });
+                                      await sendMessage(text);
+                                      setState(() => loading = false);
+                                      // Scroll to bottom after message is sent and UI updated
+                                      WidgetsBinding.instance
+                                          .addPostFrameCallback((_) {
+                                        if (scrollController.hasClients) {
+                                          scrollController.animateTo(
+                                              scrollController
+                                                  .position.maxScrollExtent,
+                                              duration: const Duration(
+                                                  milliseconds: 300),
+                                              curve: Curves.easeOut);
+                                        }
+                                      });
+                                    }),
+                          filled: true,
+                          fillColor: context.colorScheme.secondaryContainer,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide.none))))
+            ]))
+              ]),
+        ));
   }
 
   void openSMS() async {
