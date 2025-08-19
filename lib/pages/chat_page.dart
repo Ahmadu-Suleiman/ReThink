@@ -65,8 +65,8 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-          child: Column(children: [
-                Expanded(
+      child: Column(children: [
+        Expanded(
             child: SingleChildScrollView(
                 controller: scrollController,
                 child: Padding(
@@ -87,13 +87,13 @@ class _ChatPageState extends State<ChatPage> {
                           // Default to model if role is null
                           text);
                     }).toList())))),
-                if (contents.length <=
+        if (contents.length <=
             1) // Show SMS button if only initial message is present
           TextButton.icon(
               onPressed: openSMS,
               label: const Text('Offline? Use our SMS service instead'),
               icon: const Icon(Icons.sms)),
-                Padding(
+        Padding(
             padding: const EdgeInsets.all(16),
             child: Row(children: [
               Expanded(
@@ -137,8 +137,8 @@ class _ChatPageState extends State<ChatPage> {
                               borderRadius: BorderRadius.circular(12),
                               borderSide: BorderSide.none))))
             ]))
-              ]),
-        ));
+      ]),
+    ));
   }
 
   void openSMS() async {

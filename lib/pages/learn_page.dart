@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_core/flutter_chat_core.dart' show LinkPreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:rethink/config/extensions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../lists.dart';
 
@@ -40,6 +41,7 @@ class _LearnPageState extends State<LearnPage> {
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
                   child: LinkPreview(
                     enableAnimation: true,
+                    onTap: (link) => launchUrl(Uri.parse(link)),
                     onLinkPreviewDataFetched: (previewData) => setState(
                         () => data = {...data, articleUrl: previewData}),
                     linkPreviewData: data[articleUrl],

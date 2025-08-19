@@ -9,6 +9,7 @@ import 'package:markdown_widget/markdown_widget.dart';
 import 'package:rethink/config/extensions.dart';
 import 'package:rethink/config/gemini.dart';
 import 'package:rethink/config/routes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../lists.dart';
 
@@ -28,10 +29,10 @@ class _OverviewPageState extends State<OverviewPage> {
     final items = [funFact, article, challenge];
     return Scaffold(
         body: ListView(padding: const EdgeInsets.all(12), children: items),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton.extended(
             label: const Text('Scan'),
             onPressed: () => context.pushNamed(Routes.cameraPage),
-            child: const Icon(Icons.photo_camera_back)));
+            icon: const Icon(Icons.photo_camera_back)));
   }
 
   Widget get funFact => Card(
@@ -64,13 +65,17 @@ class _OverviewPageState extends State<OverviewPage> {
             child: Column(children: [
               Text('Picked for you', style: context.titleStyle),
               const Divider(),
-              LinkPreview(
-                  enableAnimation: true,
-                  onLinkPreviewDataFetched: (data) =>
-                      setState(() => previewData = data),
-                  linkPreviewData: previewData,
-                  text: articleUrl,
-                  maxWidth: double.infinity)
+              if (previewData == null)
+                const CircularProgressIndicator()
+              else
+                LinkPreview(
+                    onTap: (link) => launchUrl(Uri.parse(link)),
+                    enableAnimation: true,
+                    onLinkPreviewDataFetched: (data) =>
+                        setState(() => previewData = data),
+                    linkPreviewData: previewData,
+                    text: articleUrl,
+                    maxWidth: double.infinity)
             ])));
   }
 
