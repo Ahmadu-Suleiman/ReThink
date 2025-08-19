@@ -29,6 +29,7 @@ class _OverviewPageState extends State<OverviewPage> {
     return Scaffold(
         body: ListView(padding: const EdgeInsets.all(12), children: items),
         floatingActionButton: FloatingActionButton(
+            label: const Text('Scan'),
             onPressed: () => context.pushNamed(Routes.cameraPage),
             child: const Icon(Icons.photo_camera_back)));
   }
